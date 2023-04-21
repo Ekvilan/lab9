@@ -17,7 +17,32 @@ function num2()
 
 function num3()
 {
- // ------------------------------------------------------------
+class Node {
+  constructor(value, children) {
+    this.value = value;
+    this.children = children || [];
+  }
+}
+
+function sumNodes(root) {
+  let sum = 0;
+  if (!root) {
+    return sum;
+  }
+  sum += root.value;
+  for (let child of root.children) {
+    sum += sumNodes(child);
+  }
+  return sum;
+}
+
+// Пример использования:
+let tree = new Node(1, [
+  new Node(2, [new Node(4)]),
+  new Node(3, [new Node(5), new Node(6)])
+]);
+
+console.log(sumNodes(tree)); // 21
 }
 
 function num4()
